@@ -11,26 +11,28 @@
     stanza -->
 
     <?php
-      //identifico il detailsbase
+      //identifico il detailsbase.
       $servername = "localhost";
       $username = "root";
       $password = "root";
       $dbname = "dbhotel";
 
-      // stabilisco una connessione
+      // stabilisco una connessione.
       $conn = new mysqli($servername, $username, $password, $dbname);
 
+      //controllo l'esito della connessione e se non è andata a buonfine stampo Connection failed.
       if ($conn && $conn->connect_error) {
+
         echo "Connection failed: " . $conn->connect_error;
       }
 
       //creo la query
       $sql = "SELECT * FROM stanze";
 
-      //eseguo la query attraverso l'oggetto connection chiamo la funzione query alla quale passo la variabile sql
+      //eseguo la query attraverso l'oggetto connection chiamo la funzione query alla quale passo la variabile sql.
       $result = $conn->query($sql);
 
-      //stampo il risultato della mia query
+      //stampo il risultato della mia query.
       if ($result && $result -> num_rows > 0) {
 
         while($row = $result -> fetch_assoc()) {
@@ -43,7 +45,7 @@
         echo 'error';
       }
 
-      //chiudo la connessione stabilita a riga 18
+      //chiudo la connessione stabilita a riga 21.
       $conn->close();
 
     ?>
